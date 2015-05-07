@@ -1,3 +1,9 @@
-.col-sm-4
-	%h1 Userium posts
+.col-lg-4.col-lg-offset-3
+	%h1 Add a new post
 	= render 'form'
+
+.col-lg-8.col-lg-offset-3
+	- @posts.each do |post| 
+		%h1= post.title
+		%p= post.content
+
