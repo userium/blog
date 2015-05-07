@@ -4,6 +4,7 @@
 
 .col-lg-8.col-lg-offset-3
 	- @posts.each do |post| 
-		%h1= post.title
+		%h1= link_to post.title, post
 		%p= post.content
+		= link_to "Edit", edit_post_path(post)
 
