@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all.order("created_at DESC")
-		@post = Post.new #displaying the new form on the index page
 	end
 
 	def show
@@ -20,11 +19,12 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		# moved to the index action, for displaying the new form in there. 
 		@post = Post.new
 	end
 
 	def destroy
+		@post.destroy
+		redirect_to root_path
 	end
 
 	def update

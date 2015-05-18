@@ -1,10 +1,14 @@
-.col-lg-4.col-lg-offset-3
-	%h1 Add a new post
-	= render 'form'
-
 .col-lg-8.col-lg-offset-3
-	- @posts.each do |post| 
+	-@posts.each do |post| 
 		%h1= link_to post.title, post
 		%p= post.content
-		= link_to "Edit", edit_post_path(post)
+		-# Only visible for logged in user
+		=link_to "Edit", edit_post_path(post)
+		|
+		=link_to "Delete", post_path(post), method: :delete, data: {confirm: "Are you sure?"}
+
+
+-# Only visible for logged in user
+.col-lg-8.col-lg-offset-3
+	=link_to "New Post", new_post_path, class: "btn btn-lg btn-danger space"
 
